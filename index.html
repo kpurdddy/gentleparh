@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gentle Path Driving Instruction | Patient, Professional Driving Lessons</title>
+<meta name="description" content="Gentle Path Driving Instruction - Patient, supportive driving lessons for learners and nervous drivers. Build confidence on the road at your own pace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #FFD700;
+    --gold-dark: #E6C200;
+    --red: #DC2626;
+    --red-dark: #B91C1C;
+    --green: #16A34A;
+    --green-dark: #15803D;
+    --charcoal: #2A2A2A;
+    --slate: #4B5563;
+    --light-gray: #F3F4F6;
+    --white: #FFFFFF;
+    --road: #374151;
+    --warm-bg: #FFFCF5;
+    --accent-blue: #3B82F6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--charcoal);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 0 2rem;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--charcoal);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-logo .plate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-family: Arial Black, sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1;
+    position: relative;
+    top: -1px;
+  }
+
+  .nav-logo .l-plate {
+    background: var(--gold);
+    color: var(--charcoal);
+    border: 1.5px solid var(--charcoal);
+  }
+
+  .nav-logo .p-plate {
+    background: var(--red);
+    color: white;
+    border: 1.5px solid var(--charcoal);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--slate);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+
+  .nav-cta {
+    background: var(--green) !important;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-dark) !important; }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--charcoal);
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding: 140px 2rem 80px;
+    background: var(--warm-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--white));
+  }
+
+  /* Decorative road */
+  .hero-road {
+    position: absolute;
+    bottom: 30px;
+    left: -50px;
+    right: -50px;
+    height: 24px;
+    background: #D1D5DB;
+    border-radius: 12px;
+    opacity: 0.4;
+    transform: rotate(-1.5deg);
+  }
+
+  .hero-road::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, white 0px, white 14px, transparent 14px, transparent 26px);
+    transform: translateY(-50%);
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-text h1 .plate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    font-family: Arial Black, sans-serif;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+    box-shadow: 2px 3px 6px rgba(0,0,0,0.15);
+  }
+
+  .hero-text h1 .l-plate {
+    background: var(--gold);
+    color: var(--charcoal);
+    border: 2px solid var(--charcoal);
+  }
+
+  .hero-text h1 .p-plate {
+    background: var(--red);
+    color: white;
+    border: 2px solid var(--charcoal);
+  }
+
+  .hero-text p {
+    font-size: 1.15rem;
+    color: var(--slate);
+    margin-bottom: 2rem;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(22,163,74,0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(22,163,74,0.35);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: var(--charcoal);
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 2px solid #D1D5DB;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--charcoal);
+    transform: translateY(-1px);
+  }
+
+  /* Hero visual — license journey illustration */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .journey-cards {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .journey-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    width: 140px;
+    transition: transform 0.3s;
+  }
+
+  .journey-card:hover { transform: translateY(-4px); }
+
+  .journey-card .card-plate {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial Black, sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    margin: 0 auto 0.75rem;
+    box-shadow: 2px 3px 6px rgba(0,0,0,0.12);
+  }
+
+  .journey-card .l-card {
+    background: var(--gold);
+    color: var(--charcoal);
+    border: 2px solid var(--charcoal);
+  }
+
+  .journey-card .p1-card {
+    background: var(--red);
+    color: white;
+    border: 2px solid var(--charcoal);
+  }
+
+  .journey-card .p2-card {
+    background: var(--green);
+    color: white;
+    border: 2px solid var(--charcoal);
+  }
+
+  .journey-card h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .journey-card p {
+    font-size: 0.8rem;
+    color: var(--slate);
+    line-height: 1.4;
+  }
+
+  .journey-arrow {
+    font-size: 1.5rem;
+    color: #D1D5DB;
+    align-self: center;
+  }
+
+  /* ========== TRUST BAR ========== */
+  .trust-bar {
+    padding: 2rem;
+    background: white;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .trust-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .trust-icon {
+    font-size: 1.2rem;
+  }
+
+  /* ========== SECTIONS ========== */
+  section { padding: 80px 2rem; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--charcoal);
+  }
+
+  .section-header p {
+    color: var(--slate);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ========== SERVICES ========== */
+  .services { background: var(--light-gray); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #E5E7EB;
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card p {
+    color: var(--slate);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ========== WHY GENTLE PATH ========== */
+  .why-us { background: white; }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .why-text h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .why-text p {
+    color: var(--slate);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .why-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .why-list li {
+    padding: 0.6rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--slate);
+  }
+
+  .why-list li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .why-visual {
+    background: var(--warm-bg);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    text-align: left;
+  }
+
+  .testimonial-card .stars {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-card p {
+    font-size: 0.9rem;
+    color: var(--slate);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-card .name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--charcoal);
+  }
+
+  /* ========== PRICING ========== */
+  .pricing { background: var(--light-gray); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .price-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid #E5E7EB;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .price-card.featured {
+    border-color: var(--green);
+    box-shadow: 0 4px 20px rgba(22,163,74,0.15);
+  }
+
+  .price-card.featured::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .price-card h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .price-amount {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0.5rem 0;
+  }
+
+  .price-amount span {
+    font-size: 1rem;
+    color: var(--slate);
+    font-weight: 400;
+  }
+
+  .price-card .desc {
+    color: var(--slate);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .price-card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .price-card ul li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--slate);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .price-card ul li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* ========== CONTACT / CTA ========== */
+  .contact {
+    background: var(--charcoal);
+    color: white;
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact > .section-inner > p {
+    color: #9CA3AF;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-methods {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255,255,255,0.08);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s;
+  }
+
+  .contact-method:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-2px);
+  }
+
+  .contact-method .icon { font-size: 1.3rem; }
+
+  .contact-method .label {
+    font-size: 0.8rem;
+    color: #9CA3AF;
+    margin-bottom: 2px;
+  }
+
+  .contact-method .value {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #1F1F1F;
+    color: #9CA3AF;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  footer a {
+    color: #9CA3AF;
+    text-decoration: none;
+  }
+
+  footer a:hover { color: white; }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text { animation: fadeInUp 0.6s ease-out; }
+  .hero-visual { animation: fadeInUp 0.6s ease-out 0.2s both; }
+
+  @keyframes plateWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+
+  .hero-text h1 .plate:hover {
+    animation: plateWiggle 0.4s ease-in-out;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+
+    .hero { padding: 110px 1.5rem 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .hero-text h1 .plate { width: 38px; height: 38px; font-size: 28px; }
+    .hero-text p { margin: 0 auto 1.5rem; }
+    .hero-buttons { justify-content: center; }
+
+    .why-grid { grid-template-columns: 1fr; }
+
+    section { padding: 60px 1.5rem; }
+    .section-header h2 { font-size: 1.8rem; }
+
+    .contact-methods { flex-direction: column; align-items: center; }
+  }
+
+  @media (max-width: 480px) {
+    .journey-cards { flex-direction: column; align-items: center; }
+    .journey-arrow { transform: rotate(90deg); }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .trust-bar-inner { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      gent<span class="plate l-plate">L</span>e
+      <span class="plate p-plate">P</span>ath
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Lesson</a></li>
+    </ul>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-road"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>
+        gent<span class="plate l-plate">L</span>e
+        <span class="plate p-plate">P</span>ath<br>
+        <span style="font-size:0.5em; color:var(--slate); letter-spacing:3px; font-weight:400;">DRIVING INSTRUCTION</span>
+      </h1>
+      <p>Patient, professional driving lessons that build real confidence. Whether you're just starting out or getting back on the road, we'll get you there — at your pace.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">📞 Book Your First Lesson</a>
+        <a href="#services" class="btn-secondary">See Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="journey-cards">
+        <div class="journey-card">
+          <div class="card-plate l-card">L</div>
+          <h3>Learner</h3>
+          <p>Build skills &amp; log hours with confidence</p>
+        </div>
+        <span class="journey-arrow">→</span>
+        <div class="journey-card">
+          <div class="card-plate p1-card">P</div>
+          <h3>Red P's</h3>
+          <p>Pass your test &amp; drive solo</p>
+        </div>
+        <span class="journey-arrow">→</span>
+        <div class="journey-card">
+          <div class="card-plate p2-card">P</div>
+          <h3>Green P's</h3>
+          <p>Build experience on the road</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-icon">🔒</span> Fully Licensed &amp; Insured</div>
+    <div class="trust-item"><span class="trust-icon">🚗</span> Dual-Controlled Vehicle</div>
+    <div class="trust-item"><span class="trust-icon">⏰</span> Flexible Scheduling</div>
+    <div class="trust-item"><span class="trust-icon">📋</span> Keys2Drive Accredited</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>How We Help You Get There</h2>
+      <p>From your very first lesson to passing your driving test, we've got a path for you.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🎓</span>
+        <h3>Learner Lessons</h3>
+        <p>Structured lessons that build your skills step by step. We'll work through your logbook hours in a supportive, no-pressure environment. Pick-up and drop-off included.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📝</span>
+        <h3>Test Preparation</h3>
+        <p>Targeted sessions focused on test routes, manoeuvres, and the specific skills assessors look for. Practice until you feel genuinely ready, not just "hopefully ready."</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌱</span>
+        <h3>Nervous &amp; Returning Drivers</h3>
+        <p>Haven't driven in years? Anxious behind the wheel? That's exactly who we're built for. Gentle, patient instruction at whatever pace you need.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔑</span>
+        <h3>Keys2Drive Free Lesson</h3>
+        <p>Eligible for the government-funded Keys2Drive lesson? We're an accredited provider. One free lesson for you and your supervising driver to learn together.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🛣️</span>
+        <h3>Motorway &amp; Night Driving</h3>
+        <p>Build confidence for the situations that make learners most nervous. Motorway merging, night driving, and heavy traffic — all covered in your logbook.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">👨‍👩‍👧</span>
+        <h3>Supervisor Coaching</h3>
+        <p>We coach parents and supervisors too — so the practice hours between lessons are calm, productive, and actually build good habits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-text">
+        <h3>Why "Gentle Path"?</h3>
+        <p>Because learning to drive shouldn't feel like a battle. Too many learners come to us stressed, anxious, or convinced they're "bad at driving" — usually because they had instruction that moved too fast or made them feel foolish for mistakes.</p>
+        <p>We believe everyone can learn to drive safely and confidently. It just takes the right approach.</p>
+        <ul class="why-list">
+          <li>Patient instruction that adapts to how you learn</li>
+          <li>Clear explanations — no jargon, no shouting</li>
+          <li>Dual-controlled vehicle for your safety and peace of mind</li>
+          <li>Logbook tracking and progress updates for parents</li>
+          <li>Lessons start from your door — we come to you</li>
+          <li>Flexible hours including weekends and after school</li>
+        </ul>
+      </div>
+      <div class="why-visual">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"I was terrified of driving after a bad experience with another instructor. Gentle Path completely changed that. Patient, calm, and I passed first go!"</p>
+          <span class="name">— Sarah M.</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"My daughter went from refusing to get behind the wheel to being excited for her lessons. Can't recommend highly enough."</p>
+          <span class="name">— David K.</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Best decision we made. The supervisor coaching sessions meant our practice drives at home were so much better."</p>
+          <span class="name">— Julie T.</span>
+        </div>
+        <p style="font-size:0.8rem; color:var(--slate); margin-top:1rem;">* Sample testimonials — update with real reviews as they come in</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Simple, Transparent Pricing</h2>
+      <p>No hidden fees. No lock-in contracts. Just quality instruction.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Single Lesson</h3>
+        <div class="price-amount">$XX <span>/ hour</span></div>
+        <p class="desc">Perfect for trying us out or topping up before your test.</p>
+        <ul>
+          <li>1 hour of instruction</li>
+          <li>Pick-up &amp; drop-off</li>
+          <li>Dual-controlled vehicle</li>
+          <li>Logbook signed</li>
+        </ul>
+        <a href="#contact" class="btn-secondary" style="width:100%; justify-content:center;">Book Now</a>
+      </div>
+      <div class="price-card featured">
+        <h3>5-Lesson Package</h3>
+        <div class="price-amount">$XX <span>/ 5 hours</span></div>
+        <p class="desc">Our most popular option. Save per lesson and build real momentum.</p>
+        <ul>
+          <li>5 × 1-hour lessons</li>
+          <li>Save $XX vs single lessons</li>
+          <li>Structured progression plan</li>
+          <li>Progress updates for parents</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%; justify-content:center;">Book Now</a>
+      </div>
+      <div class="price-card">
+        <h3>10-Lesson Package</h3>
+        <div class="price-amount">$XX <span>/ 10 hours</span></div>
+        <p class="desc">Best value. Ideal for learners starting from scratch.</p>
+        <ul>
+          <li>10 × 1-hour lessons</li>
+          <li>Best per-lesson rate</li>
+          <li>Full skills development plan</li>
+          <li>Test readiness assessment</li>
+        </ul>
+        <a href="#contact" class="btn-secondary" style="width:100%; justify-content:center;">Book Now</a>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:2rem; color:var(--slate); font-size:0.9rem;">
+      🔑 <strong>Keys2Drive:</strong> Your first lesson could be FREE through the government's Keys2Drive program. <a href="#contact" style="color:var(--green); font-weight:600;">Ask us about eligibility →</a>
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <h2>Ready to Start?</h2>
+    <p>Get in touch to book your first lesson or ask any questions. We're happy to have a chat.</p>
+    <div class="contact-methods">
+      <a href="tel:+61XXXXXXXXX" class="contact-method">
+        <span class="icon">📞</span>
+        <div>
+          <div class="label">Call or Text</div>
+          <div class="value">04XX XXX XXX</div>
+        </div>
+      </a>
+      <a href="mailto:hello@gentlepath.com.au" class="contact-method">
+        <span class="icon">✉️</span>
+        <div>
+          <div class="label">Email</div>
+          <div class="value">hello@gentlepath.com.au</div>
+        </div>
+      </a>
+      <a href="#" class="contact-method">
+        <span class="icon">💬</span>
+        <div>
+          <div class="label">Social</div>
+          <div class="value">@gentlepathdriving</div>
+        </div>
+      </a>
+    </div>
+    <p style="color:#6B7280; font-size:0.9rem;">Serving [SUBURB / REGION] and surrounding areas</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:1100px; margin:0 auto;">
+    <p style="margin-bottom:0.5rem;">© 2026 Gentle Path Driving Instruction. All rights reserved.</p>
+    <p>Licensed Driving Instructor — [Licence Number] | ABN [XX XXX XXX XXX]</p>
+  </div>
+</footer>
+
+</body>
+</html>
